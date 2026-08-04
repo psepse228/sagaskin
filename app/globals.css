@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/*
+  SAGA design tokens.
+  Carried over from the liquid-glass palette validated for the previous
+  build; re-check against the client's brand book once it lands in
+  docs/client-brief/brand-book/.
+*/
+:root {
+  --navy: #0e1e35;
+  --blue: #4a7fa5;
+  --blue-2: #7aafc8;
+  --powder: #b8d4e8;
+  --sky: #daeaf4;
+  --ivory: #f5f0e8;
+  --cream: #faf8f5;
+  --ink: #111820;
+  --mist: #e4eef5;
+
+  --background: var(--cream);
+  --foreground: var(--ink);
+}
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-blue: var(--blue);
+  --color-blue-2: var(--blue-2);
+  --color-powder: var(--powder);
+  --color-sky: var(--sky);
+  --color-ivory: var(--ivory);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --color-mist: var(--mist);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-display: var(--font-cormorant);
+  --font-sans: var(--font-jost);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--navy);
+    --foreground: var(--ivory);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-jost), sans-serif;
+}

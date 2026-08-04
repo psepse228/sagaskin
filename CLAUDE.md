@@ -8,7 +8,11 @@ static site and stays deployed as-is until the new build is ready to merge.
 
 - **Next.js 15 (App Router, TypeScript, Tailwind v4)** — scaffolded 2026-08-05
 - Deployed on Vercel (`.vercel/project.json` links to the existing project)
-- No CMS/commerce backend wired up yet — see "Open questions" below
+- **Commerce: headless Shopify via Storefront API** (decided 2026-08-05) —
+  domain stays `sagaskin.uk`, checkout redirects to Shopify-hosted
+  checkout. See `docs/shopify-setup.md`. `lib/shopify/` has the client +
+  starter queries but nothing's wired into pages yet — no real API token
+  yet either.
 
 ## Layout
 
@@ -55,13 +59,11 @@ product carousel by category → newsletter → footer.
 
 ## Open questions / not yet decided
 
-- Commerce backend: memory from the prior session noted a longer-term goal
-  of a Shopify Liquid theme so the live `sagaskin.uk` Shopify store's
-  cart/checkout/accounts keep working. This rebuild is Next.js instead —
-  confirm with the user whether Next.js talks to Shopify as a headless
-  storefront (Storefront API) or whether this is a separate marketing
-  site/prototype.
-- Product catalog source (static data vs. Shopify Storefront API vs. other).
+- Need the actual Storefront API credentials (see `docs/shopify-setup.md`
+  for how to generate them — no admin password needed) before any product/
+  cart page can be wired up for real.
+- Whether customer accounts / order history get built (Shopify's Customer
+  Account API) or deferred — not addressed by the wireframes seen so far.
 
 ## Working conventions
 

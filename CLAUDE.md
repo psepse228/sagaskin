@@ -40,6 +40,13 @@ SAGA may shift the palette.
 
 - Fonts: Cormorant Garamond (display) + Jost (sans body) — wired via
   `next/font/google` in `app/layout.tsx`
+- **Single (light) theme, deliberately.** Found via screenshot 2026-08-05:
+  an automatic `prefers-color-scheme: dark` override was flipping the body
+  background to navy while every section kept its light-value Tailwind
+  classes (white cards, light pill borders) — half-broken, not a real dark
+  theme. Removed rather than left half-implemented. If a real dark theme
+  gets designed later, redo it properly (swap every token, not just
+  background/foreground) — don't re-add the partial version.
 - Colors (CSS vars in `app/globals.css`): `--navy #0e1e35`, `--blue #4a7fa5`,
   `--blue-2 #7aafc8`, `--powder #b8d4e8`, `--sky #daeaf4`, `--ivory #f5f0e8`,
   `--cream #faf8f5`, `--ink #111820`, `--mist #e4eef5`

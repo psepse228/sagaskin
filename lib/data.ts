@@ -102,6 +102,14 @@ export function getProductsByCategory(
   return MOCK_PRODUCTS.filter((p) => p.category === category);
 }
 
+export function getProductByHandle(handle: string): MockProduct | undefined {
+  return MOCK_PRODUCTS.find((p) => p.handle === handle);
+}
+
+export function getBrand(handle: string) {
+  return BRANDS.find((b) => b.handle === handle);
+}
+
 export function formatPrice(amount: number, currency: string) {
   return new Intl.NumberFormat("en-GB", {
     style: "currency",

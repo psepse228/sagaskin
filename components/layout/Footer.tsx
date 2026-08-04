@@ -32,7 +32,9 @@ export function Footer() {
           />
           <button
             type="submit"
-            className="shrink-0 rounded-full bg-navy px-4 py-1.5 font-sans text-xs uppercase tracking-wide text-ivory"
+            disabled
+            title="Not wired up yet"
+            className="shrink-0 cursor-not-allowed rounded-full bg-navy/40 px-4 py-1.5 font-sans text-xs uppercase tracking-wide text-ivory"
           >
             Join
           </button>
@@ -91,7 +93,9 @@ export function Footer() {
               />
               <button
                 type="submit"
-                className="w-fit rounded-full bg-navy px-4 py-1.5 font-sans text-xs uppercase tracking-wide text-ivory"
+                disabled
+                title="Not wired up yet"
+                className="w-fit cursor-not-allowed rounded-full bg-navy/40 px-4 py-1.5 font-sans text-xs uppercase tracking-wide text-ivory"
               >
                 Submit
               </button>

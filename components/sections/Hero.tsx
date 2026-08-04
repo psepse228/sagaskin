@@ -2,10 +2,10 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 /**
- * CSS-only hero reveal: bubbles drift in from every edge and converge,
- * then the SAGA wordmark fades in — built directly in code instead of an
- * AI-generated video (Kling wasn't producing a clean logo reveal). No
- * client JS, pure CSS animation, so it's a Server Component.
+ * CSS-only hero reveal: bubbles drift in from every edge and converge into
+ * a frosted-glass cluster, then the SAGA wordmark fades in — built directly
+ * in code (no external video tool, no new photography needed). No client
+ * JS, pure CSS animation, so it's a Server Component.
  */
 type Bubble = {
   top: string;
@@ -18,24 +18,36 @@ type Bubble = {
 };
 
 const BUBBLES: Bubble[] = [
-  { top: "20%", left: "18%", size: 46, bx: -220, by: -160, delay: 0, opacity: 0.5 },
-  { top: "30%", left: "78%", size: 60, bx: 240, by: -140, delay: 0.15, opacity: 0.45 },
-  { top: "70%", left: "22%", size: 38, bx: -200, by: 180, delay: 0.3, opacity: 0.5 },
-  { top: "75%", left: "72%", size: 70, bx: 220, by: 160, delay: 0.1, opacity: 0.4 },
-  { top: "12%", left: "50%", size: 30, bx: 0, by: -220, delay: 0.4, opacity: 0.55 },
-  { top: "85%", left: "48%", size: 34, bx: 20, by: 220, delay: 0.25, opacity: 0.5 },
-  { top: "45%", left: "10%", size: 26, bx: -260, by: 0, delay: 0.5, opacity: 0.5 },
-  { top: "50%", left: "90%", size: 44, bx: 260, by: 20, delay: 0.35, opacity: 0.45 },
-  { top: "38%", left: "35%", size: 20, bx: -140, by: -120, delay: 0.6, opacity: 0.6 },
-  { top: "62%", left: "62%", size: 24, bx: 150, by: 130, delay: 0.55, opacity: 0.55 },
+  { top: "18%", left: "16%", size: 52, bx: -240, by: -180, delay: 0, opacity: 0.55 },
+  { top: "28%", left: "80%", size: 68, bx: 260, by: -150, delay: 0.15, opacity: 0.5 },
+  { top: "72%", left: "20%", size: 40, bx: -220, by: 190, delay: 0.3, opacity: 0.55 },
+  { top: "76%", left: "74%", size: 78, bx: 240, by: 170, delay: 0.1, opacity: 0.45 },
+  { top: "10%", left: "48%", size: 32, bx: 10, by: -240, delay: 0.4, opacity: 0.6 },
+  { top: "88%", left: "50%", size: 36, bx: 20, by: 240, delay: 0.25, opacity: 0.55 },
+  { top: "44%", left: "8%", size: 28, bx: -280, by: 0, delay: 0.5, opacity: 0.55 },
+  { top: "50%", left: "92%", size: 48, bx: 280, by: 20, delay: 0.35, opacity: 0.5 },
+  { top: "36%", left: "34%", size: 22, bx: -150, by: -130, delay: 0.6, opacity: 0.65 },
+  { top: "64%", left: "64%", size: 26, bx: 160, by: 140, delay: 0.55, opacity: 0.6 },
+  { top: "58%", left: "40%", size: 16, bx: -90, by: 90, delay: 0.7, opacity: 0.6 },
+  { top: "24%", left: "60%", size: 14, bx: 100, by: -100, delay: 0.75, opacity: 0.65 },
+  { top: "80%", left: "36%", size: 20, bx: -60, by: 140, delay: 0.65, opacity: 0.55 },
+  { top: "16%", left: "32%", size: 18, bx: -160, by: -60, delay: 0.45, opacity: 0.6 },
 ];
 
 const SPARKLES = [
-  { top: "22%", left: "40%", delay: 1.8 },
-  { top: "68%", left: "58%", delay: 2.3 },
-  { top: "40%", left: "70%", delay: 2.7 },
-  { top: "58%", left: "30%", delay: 2.1 },
+  { top: "20%", left: "42%", delay: 1.8 },
+  { top: "66%", left: "58%", delay: 2.3 },
+  { top: "38%", left: "70%", delay: 2.7 },
+  { top: "60%", left: "28%", delay: 2.1 },
+  { top: "48%", left: "52%", delay: 2.5 },
 ];
+
+const BUBBLE_CLASS =
+  "absolute rounded-full backdrop-blur-[2px] border border-white/40 " +
+  "shadow-[0_8px_20px_-6px_rgba(14,30,53,0.25),inset_-3px_-3px_8px_rgba(74,127,165,0.3),inset_2px_2px_6px_rgba(255,255,255,0.8)]";
+
+const BUBBLE_BG =
+  "radial-gradient(circle at 30% 28%, rgba(255,255,255,0.95), rgba(255,255,255,0.25) 55%, rgba(122,175,200,0.12) 100%)";
 
 export function Hero() {
   return (
@@ -43,23 +55,33 @@ export function Hero() {
       className="relative flex h-[85vh] min-h-[560px] w-full items-center justify-center overflow-hidden"
       style={{
         background:
-          "radial-gradient(circle at 50% 45%, var(--blue-2) 0%, var(--sky) 55%, var(--mist) 100%)",
+          "radial-gradient(circle at 50% 40%, var(--blue-2) 0%, var(--blue) 0%, var(--sky) 58%, var(--mist) 100%)",
       }}
     >
+      {/* soft vignette for contrast under the wordmark */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 48%, rgba(14,30,53,0.18) 0%, transparent 45%)",
+        }}
+      />
+
       {BUBBLES.map((b, i) => (
         <span
           key={i}
-          className="absolute rounded-full bg-white/70 shadow-[inset_-4px_-4px_10px_rgba(74,127,165,0.25),inset_3px_3px_6px_rgba(255,255,255,0.6)]"
+          className={BUBBLE_CLASS}
           style={
             {
               top: b.top,
               left: b.left,
               width: b.size,
               height: b.size,
+              background: BUBBLE_BG,
               "--bx": `${b.bx}px`,
               "--by": `${b.by}px`,
               "--bo": b.opacity,
-              animation: `bubble-converge 1.6s ease-out ${b.delay}s both, bubble-float 6s ease-in-out ${b.delay + 1.6}s infinite`,
+              animation: `bubble-converge 1.7s ease-out ${b.delay}s both, bubble-float 6.5s ease-in-out ${b.delay + 1.7}s infinite`,
             } as CSSProperties
           }
         />
@@ -72,20 +94,23 @@ export function Hero() {
           style={{
             top: s.top,
             left: s.left,
-            animation: `sparkle-twinkle 2.4s ease-in-out ${s.delay}s infinite`,
+            animation: `sparkle-twinkle 2.6s ease-in-out ${s.delay}s infinite`,
           }}
         />
       ))}
 
       <div
         className="relative z-10 flex flex-col items-center text-center"
-        style={{ animation: "wordmark-reveal 0.9s ease-out 1.5s both" }}
+        style={{ animation: "wordmark-reveal 0.9s ease-out 1.6s both" }}
       >
+        <p className="mb-4 font-sans text-[11px] tracking-[0.4em] text-ivory/80 uppercase">
+          Korean Skincare · Est. London
+        </p>
         <h1 className="font-display text-6xl tracking-wide text-ivory sm:text-7xl">
           SAGA
         </h1>
-        <p className="mt-2 font-sans text-xs tracking-[0.35em] text-ivory/90 uppercase">
-          Korean Skincare
+        <p className="mt-3 max-w-xs font-display text-lg text-ivory/90 italic sm:text-xl">
+          Every ritual, considered.
         </p>
         <Link
           href="/products"

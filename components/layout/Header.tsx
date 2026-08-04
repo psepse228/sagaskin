@@ -102,7 +102,7 @@ export function Header() {
               {ROUTINE_STEPS.map((s) => (
                 <Link
                   key={s.step}
-                  href={`/skincare/step-${s.step}`}
+                  href={`/skincare/${s.step}`}
                   className="block px-4 py-2 font-sans text-sm text-ink hover:bg-mist"
                 >
                   Step {s.step}. {s.label}

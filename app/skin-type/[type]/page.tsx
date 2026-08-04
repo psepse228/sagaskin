@@ -14,7 +14,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { type } = await params;
   const skinType = SKIN_TYPES.find((t) => t.key === type);
-  return { title: skinType ? `${skinType.label} skin — SAGA` : "Shop by skin type — SAGA" };
+  return { title: skinType ? `${skinType.fullLabel} skin — SAGA` : "Shop by skin type — SAGA" };
 }
 
 export default async function SkinTypePage({
@@ -28,7 +28,7 @@ export default async function SkinTypePage({
 
   return (
     <PlaceholderPage
-      title={`${skinType.label} skin`}
+      title={`${skinType.fullLabel} skin`}
       note="Recommended products for this skin type aren't wired up yet — products need a skin-type tag from the real catalog first."
     />
   );

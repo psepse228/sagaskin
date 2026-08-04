@@ -40,7 +40,7 @@ export function Footer() {
           </button>
         </form>
 
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
           <div>
             <h3 className="mb-3 font-sans text-xs uppercase tracking-widest text-ink/60">
               My account
@@ -71,35 +71,17 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="col-span-2">
+          <div>
             <h3 className="mb-3 font-sans text-xs uppercase tracking-widest text-ink/60">
               Contact us
             </h3>
-            <form className="grid max-w-sm gap-2">
-              <input
-                type="text"
-                placeholder="Name"
-                className="rounded-md border border-mist bg-white px-3 py-2 font-sans text-sm text-ink placeholder:text-ink/40 focus:outline-none"
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                className="rounded-md border border-mist bg-white px-3 py-2 font-sans text-sm text-ink placeholder:text-ink/40 focus:outline-none"
-              />
-              <textarea
-                placeholder="Message"
-                rows={3}
-                className="rounded-md border border-mist bg-white px-3 py-2 font-sans text-sm text-ink placeholder:text-ink/40 focus:outline-none"
-              />
-              <button
-                type="submit"
-                disabled
-                title="Not wired up yet"
-                className="w-fit cursor-not-allowed rounded-full bg-navy/40 px-4 py-1.5 font-sans text-xs uppercase tracking-wide text-ivory"
-              >
-                Submit
-              </button>
-            </form>
+            <p className="max-w-xs font-sans text-sm text-ink/70">
+              Questions? Reach out on the{" "}
+              <Link href="/contact" className="text-blue hover:underline">
+                contact page
+              </Link>
+              .
+            </p>
           </div>
         </div>
 

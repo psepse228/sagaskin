@@ -101,7 +101,7 @@ export function Hero() {
 
       <div
         className="relative z-10 flex flex-col items-center text-center"
-        style={{ animation: "wordmark-reveal 0.9s ease-out 1.6s both" }}
+        style={{ animation: "wordmark-reveal 0.6s ease-out 0.2s both" }}
       >
         <p className="mb-4 font-sans text-[11px] tracking-[0.4em] text-ivory/80 uppercase">
           Korean Skincare · Est. London

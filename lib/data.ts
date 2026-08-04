@@ -26,11 +26,15 @@ export const PRODUCT_CATEGORIES = [
   { key: "spf", label: "SPF" },
 ] as const;
 
+// `label` is the short chip text (matches the client's wireframe circles —
+// "Comb" is deliberate there, space-constrained). `fullLabel` is the real
+// word, for anywhere rendering full text (page headings, etc.) so it
+// doesn't read as a typo.
 export const SKIN_TYPES = [
-  { key: "dry", label: "Dry" },
-  { key: "oily", label: "Oily" },
-  { key: "combination", label: "Comb" },
-  { key: "balanced", label: "Balanced / Normal" },
+  { key: "dry", label: "Dry", fullLabel: "Dry" },
+  { key: "oily", label: "Oily", fullLabel: "Oily" },
+  { key: "combination", label: "Comb", fullLabel: "Combination" },
+  { key: "balanced", label: "Balanced / Normal", fullLabel: "Balanced / Normal" },
 ] as const;
 
 export const ROUTINE_STEPS = [

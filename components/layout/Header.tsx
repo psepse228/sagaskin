@@ -55,8 +55,11 @@ export function Header() {
           <SearchIcon />
           <input
             type="search"
-            placeholder="Search…"
-            className="w-full bg-transparent font-sans text-sm text-ink placeholder:text-ink/40 focus:outline-none"
+            placeholder="Search — coming soon"
+            disabled
+            aria-disabled="true"
+            title="Search isn't wired up yet — needs the real product catalog"
+            className="w-full cursor-not-allowed bg-transparent font-sans text-sm text-ink/50 placeholder:text-ink/40 focus:outline-none"
           />
         </div>
 

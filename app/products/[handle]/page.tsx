@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   MOCK_PRODUCTS,
@@ -32,6 +33,12 @@ export default async function ProductPage({
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-14">
+      <Link
+        href="/products"
+        className="mb-6 inline-block font-sans text-sm text-blue hover:underline"
+      >
+        ← Back to products
+      </Link>
       <div className="grid gap-10 sm:grid-cols-2">
         <div className="flex items-center justify-center rounded-2xl border border-mist bg-white p-10">
           <Image

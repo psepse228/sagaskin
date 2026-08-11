@@ -2,7 +2,6 @@
 // copy/brand book lands (docs/client-brief/).
 const ITEMS = [
   "Korean Skincare",
-  "Curated in London",
   "Clean Ingredients",
   "Skin First",
   "Small-Batch Brands",

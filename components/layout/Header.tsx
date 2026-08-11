@@ -23,7 +23,7 @@ function WishlistIcon({ size = 18 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
       <path
-        d="M12 20s-7-4.35-9.5-8.5C.7 8 2.2 4.5 5.8 4.5c2 0 3.4 1.1 4.2 2.4.8-1.3 2.2-2.4 4.2-2.4 3.6 0 5.1 3.5 3.3 7C19 15.65 12 20 12 20z"
+        d="M4.318 6.318a4.5 4.5 0 0 1 6.364 0L12 7.636l1.318-1.318a4.5 4.5 0 1 1 6.364 6.364L12 20.364l-7.682-7.682a4.5 4.5 0 0 1 0-6.364z"
         strokeLinejoin="round"
       />
     </svg>
@@ -48,7 +48,7 @@ export function Header() {
     <header className="border-b border-mist bg-cream">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-5">
         <Link href="/" className="font-display text-3xl tracking-wide text-navy sm:text-4xl">
-          SAGA
+          SAGASKIN
         </Link>
 
         <div className="hidden flex-1 max-w-md items-center gap-2 rounded-full border border-mist bg-white px-4 py-2.5 md:flex">

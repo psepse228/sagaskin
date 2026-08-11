@@ -1,18 +1,28 @@
 # SAGA (formerly Sagaskin) — Agent Instructions
 
-Korean skincare e-commerce site, rebranding **SAGASKIN → SAGA**. Complete
-rebuild in progress on the `rebuild` branch; `main` still holds the old
-static site and stays deployed as-is until the new build is ready to merge.
+Korean skincare e-commerce site, rebranding **SAGASKIN → SAGA**. The
+Next.js rebuild is now what's live in Production on Vercel — `main` and
+`rebuild` merged 2026-08-11; the old `legacy-static/` reference build
+(plain HTML SAGASKIN era) was deleted from the repo the same day since it
+was no longer needed. `rebuild` is kept around as the working branch for
+new changes; merge it into `main` when a round of work is ready to ship
+(main is the Vercel Production branch).
 
 ## Stack
 
 - **Next.js 15 (App Router, TypeScript, Tailwind v4)** — scaffolded 2026-08-05
-- Deployed on Vercel (`.vercel/project.json` links to the existing project)
+- Deployed on Vercel (`.vercel/project.json` links to the existing
+  `sagaskin` project under `muhammadrizomirzaahmedov-7014s-projects`).
+  **No custom domain is actually attached to this Vercel project** —
+  checked 2026-08-11, only `.vercel.app` aliases exist (`sagaskin.vercel.app`
+  etc.). If `sagaskin.uk` is live anywhere, it's on separate
+  hosting/DNS this repo doesn't control — re-verify before assuming a
+  push here updates what visitors at that domain see.
 - **Commerce: headless Shopify via Storefront API** (decided 2026-08-05) —
-  domain stays `sagaskin.uk`, checkout redirects to Shopify-hosted
-  checkout. See `docs/shopify-setup.md`. `lib/shopify/` has the client +
-  starter queries but nothing's wired into pages yet — no real API token
-  yet either.
+  checkout redirects to Shopify-hosted checkout. See
+  `docs/shopify-setup.md`. `lib/shopify/` has the client + starter
+  queries but nothing's wired into pages yet — no real API token yet
+  either.
 
 ## Layout
 
@@ -28,7 +38,6 @@ public/
 docs/
   client-brief/          # wireframes, hero reference, brand book — READ THIS
     README.md            # index of what's in here and what's still pending
-legacy-static/           # the old index.html build (SAGASKIN era) — reference only, not built
 ```
 
 ## Design system
@@ -78,8 +87,6 @@ product carousel by category → newsletter → footer.
   (cart, quantity stepper, quick-view modal, mobile nav toggle).
 - Run `npm run build` before considering any milestone done — zero type
   errors.
-- Don't touch `legacy-static/` except to reference it; it's the old design
-  for continuity, not something to edit.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

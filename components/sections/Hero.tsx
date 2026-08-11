@@ -109,10 +109,8 @@ export function Hero() {
         <h1 className="font-display text-7xl tracking-wide text-ivory sm:text-8xl">
           SAGA
         </h1>
-        {/* TODO: client flagged this tagline for replacement (feedback/photo_2026-08-06_18-17-00.jpg)
-            but hasn't sent exact copy yet — leaving as-is until they do. */}
         <p className="mt-3 max-w-xs font-display text-lg text-ivory/90 italic sm:text-xl">
-          Every ritual, considered.
+          Every skin has a story.
         </p>
         <Link
           href="/products"

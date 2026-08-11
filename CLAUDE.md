@@ -13,11 +13,12 @@ new changes; merge it into `main` when a round of work is ready to ship
 - **Next.js 15 (App Router, TypeScript, Tailwind v4)** — scaffolded 2026-08-05
 - Deployed on Vercel (`.vercel/project.json` links to the existing
   `sagaskin` project under `muhammadrizomirzaahmedov-7014s-projects`).
-  **No custom domain is actually attached to this Vercel project** —
-  checked 2026-08-11, only `.vercel.app` aliases exist (`sagaskin.vercel.app`
-  etc.). If `sagaskin.uk` is live anywhere, it's on separate
-  hosting/DNS this repo doesn't control — re-verify before assuming a
-  push here updates what visitors at that domain see.
+  `sagaskin.uk` was added to this Vercel project 2026-08-11 but **DNS has
+  not been repointed yet** — the domain is currently still live on an
+  existing Shopify store (see "Domain / DNS" below), and the plan is to
+  cut over only once Shopify's Storefront API + cart/checkout are fully
+  wired here. Until then this repo's pushes only show up on
+  `.vercel.app` preview/production URLs, not `sagaskin.uk`.
 - **Commerce: headless Shopify via Storefront API** (decided 2026-08-05) —
   checkout redirects to Shopify-hosted checkout. See
   `docs/shopify-setup.md`. `lib/shopify/` has the client + starter
@@ -73,11 +74,35 @@ Celimax, Dr. Althea, Skin1004, Haruharu Wonder, etc.) and `Skincare ▾`
 (routine Step 1–5). Homepage: hero → best sellers → shop-by-skintype →
 product carousel by category → newsletter → footer.
 
+## Domain / DNS
+
+`sagaskin.uk` is **not just unregistered/idle** — checked 2026-08-11:
+
+- Apex (`sagaskin.uk`) and `www.sagaskin.uk` (CNAME → `shops.myshopify.com`)
+  are both already pointed at an **existing Shopify store**. It currently
+  serves Shopify's "Store unavailable" page (paused/frozen store, or a
+  broken domain link on Shopify's side — undetermined).
+- The domain also carries **live Google Workspace email**
+  (`MX smtp.google.com`, SPF `include:_spf.google.com`) — don't touch
+  those records when eventually repointing DNS.
+- It's unconfirmed whether that existing Shopify store is the one to
+  connect the Storefront API to (may already hold real products) or is
+  unrelated/stale — client is checking who has admin access.
+- `sagaskin.uk` was added to the `sagaskin` Vercel project 2026-08-11
+  (`vercel domains add`) but DNS itself was deliberately **not**
+  repointed — client wants Shopify (Storefront API + cart/checkout)
+  fully wired here first, so the real domain never shows a half-working
+  site. Once ready, cutover is either an A record (`sagaskin.uk` →
+  `76.76.21.21`) or switching nameservers to Vercel's — Vercel showed
+  exact instructions when the domain was added; re-run
+  `vercel domains inspect sagaskin.uk` to get current ones.
+
 ## Open questions / not yet decided
 
 - Need the actual Storefront API credentials (see `docs/shopify-setup.md`
   for how to generate them — no admin password needed) before any product/
-  cart page can be wired up for real.
+  cart page can be wired up for real. See "Domain / DNS" above — may be
+  the existing store already on `sagaskin.uk`, unconfirmed.
 - Whether customer accounts / order history get built (Shopify's Customer
   Account API) or deferred — not addressed by the wireframes seen so far.
 

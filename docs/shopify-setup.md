@@ -4,6 +4,28 @@ Decided 2026-08-05: rebuild stays Next.js, Shopify stays the commerce
 backend via the **Storefront API** (not a Liquid theme, not the admin
 login/password). Domain stays `sagaskin.uk`.
 
+## sagaskin.uk is already live on Shopify — check before assuming a fresh store
+
+Found 2026-08-11 via DNS: `sagaskin.uk` (apex, A record) and
+`www.sagaskin.uk` (CNAME → `shops.myshopify.com`) are **already pointed
+at an existing Shopify store**, not empty/parked. Loading the domain
+currently returns Shopify's "Store unavailable" page (store
+paused/frozen, or the domain link on the Shopify side is broken — can't
+tell without admin access).
+
+The domain also carries **live Google Workspace email**
+(`MX smtp.google.com`, SPF `include:_spf.google.com`) — any DNS change
+here must not touch those records.
+
+**Before generating a Storefront API token**, confirm whether that
+existing Shopify store is the one to connect to (it may already have
+the real product catalog) or whether it's unrelated/stale and a fresh
+store is needed. Whoever has Shopify admin access needs to check.
+Client asked (2026-08-11) to hold off repointing `sagaskin.uk`'s DNS to
+Vercel until the Storefront API + cart/checkout are fully wired on the
+Next.js site, specifically to avoid a window where the real domain
+shows an unfinished site with no working commerce.
+
 ## What we need from the client (or whoever has admin access)
 
 No password required — only these two values, generated from a **custom

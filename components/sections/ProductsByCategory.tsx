@@ -14,18 +14,18 @@ export function ProductsByCategory() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-14">
       <div className="mb-8 flex items-center justify-between">
-        <h2 className="font-display text-3xl text-navy">Products</h2>
-        <Link href="/products" className="font-sans text-sm text-blue hover:underline">
+        <h2 className="font-display text-4xl text-navy sm:text-5xl">Products</h2>
+        <Link href="/products" className="font-sans text-base font-medium text-blue hover:underline">
           View all →
         </Link>
       </div>
 
-      <div className="mb-8 flex flex-wrap gap-2">
+      <div className="mb-8 flex flex-wrap gap-3">
         {PRODUCT_CATEGORIES.map((category) => (
           <button
             key={category.key}
             onClick={() => setActive(category.key)}
-            className={`rounded-full border px-4 py-1.5 font-sans text-sm transition-colors ${
+            className={`rounded-full border px-5 py-2 font-sans text-base transition-colors ${
               active === category.key
                 ? "border-navy bg-navy text-ivory"
                 : "border-mist text-ink hover:border-blue hover:text-blue"

@@ -104,11 +104,13 @@ export function Hero() {
         style={{ animation: "wordmark-reveal 0.6s ease-out 0.2s both" }}
       >
         <p className="mb-4 font-sans text-[11px] tracking-[0.4em] text-ivory/80 uppercase">
-          Korean Skincare · Est. London
+          Korean Skincare
         </p>
-        <h1 className="font-display text-6xl tracking-wide text-ivory sm:text-7xl">
+        <h1 className="font-display text-7xl tracking-wide text-ivory sm:text-8xl">
           SAGA
         </h1>
+        {/* TODO: client flagged this tagline for replacement (feedback/photo_2026-08-06_18-17-00.jpg)
+            but hasn't sent exact copy yet — leaving as-is until they do. */}
         <p className="mt-3 max-w-xs font-display text-lg text-ivory/90 italic sm:text-xl">
           Every ritual, considered.
         </p>

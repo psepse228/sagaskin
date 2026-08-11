@@ -20,7 +20,7 @@ export function Footer() {
   return (
     <footer className="border-t border-mist bg-cream">
       <div className="mx-auto max-w-7xl px-6 py-10">
-        <form className="mb-10 flex max-w-lg items-center gap-2 rounded-full border border-mist bg-white px-4 py-2.5">
+        <form className="mb-12 flex max-w-lg items-center gap-2 rounded-full border border-mist bg-white px-5 py-3.5">
           <label htmlFor="newsletter-email" className="sr-only">
             Email
           </label>
@@ -28,13 +28,13 @@ export function Footer() {
             id="newsletter-email"
             type="email"
             placeholder="Join our newsletter — enter email…"
-            className="w-full bg-transparent font-sans text-sm text-ink placeholder:text-ink/40 focus:outline-none"
+            className="w-full bg-transparent font-sans text-base text-ink placeholder:text-ink/40 focus:outline-none"
           />
           <button
             type="submit"
             disabled
             title="Not wired up yet"
-            className="shrink-0 cursor-not-allowed rounded-full bg-navy/40 px-4 py-1.5 font-sans text-xs uppercase tracking-wide text-ivory"
+            className="shrink-0 cursor-not-allowed rounded-full bg-navy/40 px-5 py-2 font-sans text-xs font-bold uppercase tracking-wide text-ivory"
           >
             Join
           </button>
@@ -42,13 +42,13 @@ export function Footer() {
 
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
           <div>
-            <h3 className="mb-3 font-sans text-xs uppercase tracking-widest text-ink/60">
+            <h3 className="mb-4 font-sans text-base font-bold uppercase tracking-widest text-ink/70">
               My account
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               {accountLinks.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="font-sans text-sm text-ink hover:text-blue">
+                  <Link href={l.href} className="font-sans text-base font-medium text-ink hover:text-blue">
                     {l.label}
                   </Link>
                 </li>
@@ -57,13 +57,13 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-3 font-sans text-xs uppercase tracking-widest text-ink/60">
+            <h3 className="mb-4 font-sans text-base font-bold uppercase tracking-widest text-ink/70">
               Information
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               {infoLinks.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="font-sans text-sm text-ink hover:text-blue">
+                  <Link href={l.href} className="font-sans text-base font-medium text-ink hover:text-blue">
                     {l.label}
                   </Link>
                 </li>
@@ -72,10 +72,10 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-3 font-sans text-xs uppercase tracking-widest text-ink/60">
+            <h3 className="mb-4 font-sans text-base font-bold uppercase tracking-widest text-ink/70">
               Contact us
             </h3>
-            <p className="max-w-xs font-sans text-sm text-ink/70">
+            <p className="max-w-xs font-sans text-base font-medium text-ink/70">
               Questions? Reach out on the{" "}
               <Link href="/contact" className="text-blue hover:underline">
                 contact page

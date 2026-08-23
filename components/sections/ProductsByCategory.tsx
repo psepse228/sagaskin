@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { PRODUCT_CATEGORIES, getProductsByCategory } from "@/lib/data";
 import { ProductCard } from "@/components/ui/ProductCard";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function ProductsByCategory() {
   const [active, setActive] = useState<(typeof PRODUCT_CATEGORIES)[number]["key"]>(
@@ -37,11 +38,11 @@ export function ProductsByCategory() {
       </div>
 
       {products.length > 0 ? (
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+        <Reveal className="grid grid-cols-2 gap-6 sm:grid-cols-4">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
-        </div>
+        </Reveal>
       ) : (
         <p className="font-sans text-sm text-ink/50">
           No products in this category yet.

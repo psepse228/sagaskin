@@ -49,7 +49,7 @@ export function ProductCard({ product }: { product: MockProduct }) {
   return (
     <Link
       href={`/products/${product.handle}`}
-      className="group flex flex-col items-center rounded-2xl border border-mist bg-white p-5 text-center transition-shadow hover:shadow-md"
+      className="group flex flex-col items-center rounded-2xl border border-mist bg-white p-5 text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_30px_-16px_rgba(14,30,53,0.35)]"
     >
       <div className="relative mb-4 flex aspect-[3/4] w-full items-center justify-center overflow-hidden rounded-xl bg-mist/30">
         <Image

@@ -89,9 +89,36 @@ export function Footer() {
           <span className="font-sans text-xs tracking-wide text-ink/60">
             Visa · Amex · PayPal
           </span>
-          <span className="font-sans text-xs text-ink/50">
-            © SAGA {new Date().getFullYear()}. All rights reserved.
-          </span>
+
+          <div className="flex items-center gap-4">
+            <span className="font-sans text-xs text-ink/50">
+              © SAGA {new Date().getFullYear()}. All rights reserved.
+            </span>
+
+            {/* Maker's mark — a quiet nod, not a badge. Bubble cluster echoes
+                the hero motif; the caption only shows up if you look. */}
+            <div className="group flex cursor-default items-center gap-2">
+              <span className="relative block h-3.5 w-3.5" aria-hidden="true">
+                <span
+                  className="absolute top-0 left-0 h-2.5 w-2.5 rounded-full"
+                  style={{
+                    background:
+                      "radial-gradient(circle at 30% 28%, #fff, rgba(122,175,200,0.9) 75%)",
+                  }}
+                />
+                <span
+                  className="absolute right-0 bottom-0 h-1.5 w-1.5 rounded-full transition-transform duration-300 motion-safe:group-hover:[animation:bubble-float_2.2s_ease-in-out_0.1s_infinite]"
+                  style={{
+                    background:
+                      "radial-gradient(circle at 30% 28%, #fff, rgba(122,175,200,0.9) 75%)",
+                  }}
+                />
+              </span>
+              <span className="font-display text-xs text-ink/0 italic transition-colors duration-300 group-hover:text-ink/50">
+                Crafted by Solura
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

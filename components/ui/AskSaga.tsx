@@ -23,10 +23,32 @@ const BLURBS: Record<(typeof SKIN_TYPES)[number]["key"], string> = {
 
 type SkinType = (typeof SKIN_TYPES)[number];
 
+const NUDGE_STORAGE_KEY = "saga-ask-nudge-seen";
+
 export function AskSaga() {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<SkinType | null>(null);
+  const [showNudge, setShowNudge] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
+
+  // First-time visitors get a quiet nudge toward Ask SAGA instead of the
+  // panel forcing itself open — a chat window popping open unprompted
+  // reads as spammy on an e-commerce site. Shown once per browser
+  // (localStorage), auto-dismisses if ignored.
+  useEffect(() => {
+    if (window.localStorage.getItem(NUDGE_STORAGE_KEY)) return;
+    const showTimer = window.setTimeout(() => {
+      setShowNudge(true);
+      window.localStorage.setItem(NUDGE_STORAGE_KEY, "1");
+    }, 2200);
+    return () => window.clearTimeout(showTimer);
+  }, []);
+
+  useEffect(() => {
+    if (!showNudge) return;
+    const hideTimer = window.setTimeout(() => setShowNudge(false), 9000);
+    return () => window.clearTimeout(hideTimer);
+  }, [showNudge]);
 
   useEffect(() => {
     if (!open) return;
@@ -45,6 +67,32 @@ export function AskSaga() {
 
   return (
     <div className="fixed right-6 bottom-6 z-40">
+      {showNudge && !open && (
+        <div
+          className="ask-saga-nudge absolute right-0 bottom-[68px] flex w-[220px] items-center gap-2 rounded-2xl rounded-br-sm border border-mist bg-white px-4 py-3 shadow-[0_16px_32px_-14px_rgba(14,30,53,0.35)]"
+          style={{ animation: "nudge-in 0.35s ease-out both" }}
+        >
+          <button
+            type="button"
+            onClick={() => {
+              setShowNudge(false);
+              setOpen(true);
+            }}
+            className="text-left font-sans text-sm text-ink transition-opacity hover:opacity-80"
+          >
+            Not sure where to start? <span className="font-medium text-blue">Ask SAGA →</span>
+          </button>
+          <button
+            type="button"
+            aria-label="Dismiss"
+            onClick={() => setShowNudge(false)}
+            className="ml-auto shrink-0 text-ink/40 hover:text-ink"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
       {open && (
         <div
           ref={panelRef}
@@ -107,7 +155,10 @@ export function AskSaga() {
 
       <button
         type="button"
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => {
+          setShowNudge(false);
+          setOpen((v) => !v);
+        }}
         aria-label={open ? "Close Ask SAGA" : "Open Ask SAGA, skincare concierge"}
         aria-expanded={open}
         className="relative flex h-14 w-14 items-center justify-center rounded-full bg-navy text-ivory shadow-[0_10px_24px_-8px_rgba(14,30,53,0.45)] transition-transform hover:scale-105"

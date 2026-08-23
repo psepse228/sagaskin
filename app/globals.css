@@ -115,6 +115,18 @@ body {
   }
 }
 
+/* Ask SAGA first-visit nudge bubble */
+@keyframes nudge-in {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 /* Scroll reveal — see components/ui/Reveal.tsx. Direct children fade/rise
    in, staggered up to 5; anything past that reveals without extra delay. */
 .reveal > * {
@@ -151,6 +163,9 @@ body {
     transition: none;
   }
   .bubble-divider span {
+    animation: none !important;
+  }
+  .ask-saga-nudge {
     animation: none !important;
   }
 }

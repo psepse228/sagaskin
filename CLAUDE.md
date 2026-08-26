@@ -10,6 +10,17 @@ new changes; merge it into `main` when a round of work is ready to ship
 
 ## Stack
 
+- **Product catalog is real, not placeholder** — `lib/data.ts` holds 15
+  real products (names, prices, photos, ingredients) the client sent
+  2026-08-26, replacing the earlier 4 fictitious mock products. Source
+  material was a `products/` folder (untracked, not committed — raw
+  photos + `_des.txt` descriptions) dropped at the repo root; images were
+  copied into `public/images/products/` with clean filenames, descriptions
+  parsed into `lib/data.ts`. Still not the real Shopify Storefront API
+  (no live stock sync) — `lib/shopify/` is still unwired — but the catalog
+  itself is genuine. One product (`haruharu-black-rice-cleansing-oil`)
+  has placeholder-but-honest short copy since the client's description
+  file for it arrived empty; swap once real copy lands.
 - **Next.js 15 (App Router, TypeScript, Tailwind v4)** — scaffolded 2026-08-05
 - Deployed on Vercel (`.vercel/project.json` links to the existing
   `sagaskin` project under `muhammadrizomirzaahmedov-7014s-projects`).

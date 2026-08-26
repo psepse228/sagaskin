@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import {
   MOCK_PRODUCTS,
   formatPrice,
+  getBrand,
   getProductByHandle,
 } from "@/lib/data";
 import { buildWhatsAppOrderUrl, isWhatsAppOrderingConfigured } from "@/lib/whatsapp";
@@ -59,19 +60,27 @@ export default async function ProductPage({
           />
         </div>
         <div>
-          {product.vegan && (
-            <span className="mb-3 inline-block rounded-full border border-mist bg-cream px-3 py-1 font-sans text-[11px] tracking-wide text-ink/70">
-              Vegan
-            </span>
-          )}
+          <div className="mb-3 flex flex-wrap items-center gap-2">
+            {getBrand(product.brand) && (
+              <Link
+                href={`/brands/${product.brand}`}
+                className="font-sans text-[11px] tracking-[0.15em] text-blue uppercase hover:underline"
+              >
+                {getBrand(product.brand)!.label}
+              </Link>
+            )}
+            {product.vegan && (
+              <span className="inline-block rounded-full border border-mist bg-cream px-3 py-1 font-sans text-[11px] tracking-wide text-ink/70">
+                Vegan
+              </span>
+            )}
+          </div>
           <h1 className="font-display text-4xl text-navy">{product.title}</h1>
           <p className="mt-3 font-sans text-xl text-ink/80">
             {formatPrice(product.price, product.currency)}
           </p>
-          <p className="mt-6 max-w-sm font-sans text-sm text-ink/60">
-            Full product description, ingredients, and how-to-use details
-            land here once the real catalog (Shopify Storefront API) is
-            wired in — see docs/shopify-setup.md.
+          <p className="mt-6 max-w-md font-sans text-sm text-ink/70">
+            {product.description}
           </p>
           {isWhatsAppOrderingConfigured() ? (
             <a
@@ -92,6 +101,26 @@ export default async function ProductPage({
               <WhatsAppIcon />
               Order via WhatsApp
             </button>
+          )}
+
+          {product.howToUse && (
+            <div className="mt-10 border-t border-mist pt-6">
+              <h2 className="mb-2 font-sans text-xs font-semibold tracking-[0.15em] text-ink/60 uppercase">
+                How to use
+              </h2>
+              <p className="max-w-md font-sans text-sm text-ink/70">{product.howToUse}</p>
+            </div>
+          )}
+
+          {product.ingredients && (
+            <details className="mt-6 border-t border-mist pt-6">
+              <summary className="cursor-pointer font-sans text-xs font-semibold tracking-[0.15em] text-ink/60 uppercase">
+                Ingredients
+              </summary>
+              <p className="mt-3 max-w-md font-sans text-xs leading-relaxed text-ink/50">
+                {product.ingredients}
+              </p>
+            </details>
           )}
         </div>
       </div>

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { formatPrice, type MockProduct } from "@/lib/data";
+import { formatPrice, getBrand, type MockProduct } from "@/lib/data";
 import { buildWhatsAppOrderUrl, isWhatsAppOrderingConfigured } from "@/lib/whatsapp";
 
 function HeartIcon({ filled }: { filled: boolean }) {
@@ -113,6 +113,11 @@ export function ProductCard({ product }: { product: MockProduct }) {
           {added ? <CheckIcon /> : <BagPlusIcon />}
         </button>
       </div>
+      {getBrand(product.brand) && (
+        <p className="font-sans text-[10px] tracking-[0.12em] text-ink/50 uppercase">
+          {getBrand(product.brand)!.label}
+        </p>
+      )}
       <h3 className="font-sans text-sm text-ink">{product.title}</h3>
       <p className="mt-1 font-sans text-sm text-ink/60">
         {formatPrice(product.price, product.currency)}

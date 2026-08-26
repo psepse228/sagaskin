@@ -13,17 +13,25 @@ new changes; merge it into `main` when a round of work is ready to ship
 - **Next.js 15 (App Router, TypeScript, Tailwind v4)** — scaffolded 2026-08-05
 - Deployed on Vercel (`.vercel/project.json` links to the existing
   `sagaskin` project under `muhammadrizomirzaahmedov-7014s-projects`).
-  `sagaskin.uk` was added to this Vercel project 2026-08-11 but **DNS has
-  not been repointed yet** — the domain is currently still live on an
-  existing Shopify store (see "Domain / DNS" below), and the plan is to
-  cut over only once Shopify's Storefront API + cart/checkout are fully
-  wired here. Until then this repo's pushes only show up on
-  `.vercel.app` preview/production URLs, not `sagaskin.uk`.
-- **Commerce: headless Shopify via Storefront API** (decided 2026-08-05) —
-  checkout redirects to Shopify-hosted checkout. See
-  `docs/shopify-setup.md`. `lib/shopify/` has the client + starter
-  queries but nothing's wired into pages yet — no real API token yet
-  either.
+  `sagaskin.uk` was added to this Vercel project 2026-08-11; client is
+  repointing DNS (A records for apex + `www` → `76.76.21.21`) as of
+  2026-08-26, ahead of Shopify being wired up — see "Commerce" below for
+  why that's no longer the blocker it was.
+- **Commerce: headless Shopify via Storefront API, still the plan long
+  term** (decided 2026-08-05) — but the Shopify account this connects to
+  hit an unresolved backend bug starting 2026-08-11, still open as of
+  2026-08-26: every resource-creation action — app install, even
+  brand-new store creation — 500s account-wide; a Shopify Support ticket
+  is open, see `docs/shopify-setup.md`. Rather than block the whole site
+  launch on that ticket, client decided 2026-08-26 to launch now with
+  **WhatsApp ordering as a stopgap**: see `lib/whatsapp.ts` — a "Order via
+  WhatsApp" link (`wa.me`) on product cards and the product detail page,
+  in place of cart/checkout, until either the Shopify account gets fixed
+  or a fresh Shopify account is set up. `WHATSAPP_NUMBER` in that file is
+  still empty — client hasn't sent the business number yet; the buttons
+  render honestly disabled until it's filled in. `lib/shopify/` still has
+  the client + starter queries, untouched, for whenever this gets
+  revisited.
 
 ## Layout
 

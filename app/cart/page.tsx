@@ -7,7 +7,7 @@ export default function CartPage() {
   return (
     <PlaceholderPage
       title="Your cart is empty"
-      note="Cart/checkout isn't wired up yet — pending the Shopify Storefront API token (see docs/shopify-setup.md). It'll hand off to Shopify's hosted checkout once connected."
+      note="There's no cart yet — for now, order directly by tapping 'Order via WhatsApp' on any product. Real cart/checkout is pending the Shopify Storefront API token (see docs/shopify-setup.md) and will hand off to Shopify's hosted checkout once that's connected."
     />
   );
 }

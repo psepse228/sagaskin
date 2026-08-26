@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { formatPrice, type MockProduct } from "@/lib/data";
+import { buildWhatsAppOrderUrl, isWhatsAppOrderingConfigured } from "@/lib/whatsapp";
 
 function HeartIcon({ filled }: { filled: boolean }) {
   return (
@@ -84,15 +85,26 @@ export function ProductCard({ product }: { product: MockProduct }) {
 
         <button
           type="button"
-          aria-label={added ? "Added to cart" : "Quick add to cart"}
-          title="Cart isn't wired up yet — needs the Shopify Storefront API"
+          aria-label={added ? "Order sent to WhatsApp" : "Order via WhatsApp"}
+          title={
+            isWhatsAppOrderingConfigured()
+              ? "Order via WhatsApp"
+              : "WhatsApp ordering isn't set up yet — needs the business number"
+          }
+          disabled={!isWhatsAppOrderingConfigured()}
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
+            if (!isWhatsAppOrderingConfigured()) return;
             setAdded(true);
             window.setTimeout(() => setAdded(false), 1600);
+            window.open(
+              buildWhatsAppOrderUrl(product.title, formatPrice(product.price, product.currency)),
+              "_blank",
+              "noopener,noreferrer",
+            );
           }}
-          className={`absolute bottom-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border transition-colors ${
+          className={`absolute bottom-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
             added
               ? "border-navy bg-navy text-ivory"
               : "border-mist bg-white/90 text-navy/70 backdrop-blur-sm hover:border-blue"

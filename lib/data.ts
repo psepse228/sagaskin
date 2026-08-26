@@ -79,10 +79,9 @@ export const MOCK_PRODUCTS: MockProduct[] = [
     price: 19.5,
     currency: "GBP",
     image: "/images/products/haruharu-black-rice-cleansing-oil.jpg",
-    // TODO: client's description file for this one arrived empty — this is
-    // short, honest copy based only on what a cleansing oil does, not
-    // invented claims. Swap for the client's real copy once it lands.
-    description: `A nourishing cleansing oil that melts away makeup, SPF, and the day's buildup as the first step of a double cleanse, rinsing clean without stripping the skin.`,
+    description: `A gentle yet powerful cleansing oil that effortlessly melts away makeup, SPF, and impurities while keeping your skin soft, balanced, and nourished. The Black Rice Moisture Cleansing Oil is designed with a minimal yet highly effective formula to deliver a deep cleanse without irritation. With just nine carefully selected ingredients, it removes buildup from the day while maintaining your skin's natural moisture barrier. Enriched with black rice extract, this antioxidant-rich formula helps support a brighter, healthier-looking complexion. A blend of nourishing plant oils, including jojoba, olive, and sunflower, works to dissolve excess sebum and impurities while leaving the skin feeling hydrated and comfortable — never greasy or stripped. Its lightweight texture transforms into a silky milky emulsion upon contact with water, allowing for a thorough cleanse that helps reduce blackheads and congestion over time.`,
+    howToUse: `Dispense an appropriate amount onto dry hands and gently massage onto a dry face. Add a small amount of water to emulsify the oil into a milky texture, then continue massaging. Rinse thoroughly with lukewarm water. For best results, follow with the Moisture 5.5 Soft Cleansing Gel as part of your double cleansing routine.`,
+    ingredients: `Oryza Sativa (Rice) Bran Oil, Caprylic/Capric Triglyceride, Helianthus Annuus (Sunflower) Seed Oil, Olea Europaea (Olive) Fruit Oil, Sorbeth-30 Tetraoleate, Simmondsia Chinensis (Jojoba) Seed Oil, Macadamia Integrifolia Seed Oil, Tocopherol, Ethylhexylglycerin`,
   },
   {
     id: "axis-y-eye-serum",

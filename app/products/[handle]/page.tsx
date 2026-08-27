@@ -9,6 +9,7 @@ import {
   getProductByHandle,
 } from "@/lib/data";
 import { buildWhatsAppOrderUrl, isWhatsAppOrderingConfigured } from "@/lib/whatsapp";
+import { WishlistButton } from "@/components/ui/WishlistButton";
 
 function WhatsAppIcon() {
   return (
@@ -82,26 +83,29 @@ export default async function ProductPage({
           <p className="mt-6 max-w-md font-sans text-sm text-ink/70">
             {product.description}
           </p>
-          {isWhatsAppOrderingConfigured() ? (
-            <a
-              href={buildWhatsAppOrderUrl(product.title, formatPrice(product.price, product.currency))}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-navy px-8 py-3 font-sans text-sm tracking-wide text-ivory transition-colors hover:bg-navy/90"
-            >
-              <WhatsAppIcon />
-              Order via WhatsApp
-            </a>
-          ) : (
-            <button
-              disabled
-              title="WhatsApp ordering isn't set up yet — needs the business number"
-              className="mt-8 inline-flex cursor-not-allowed items-center gap-2 rounded-full bg-navy/40 px-8 py-3 font-sans text-sm tracking-wide text-ivory"
-            >
-              <WhatsAppIcon />
-              Order via WhatsApp
-            </button>
-          )}
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            {isWhatsAppOrderingConfigured() ? (
+              <a
+                href={buildWhatsAppOrderUrl(product.title, formatPrice(product.price, product.currency))}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-navy px-8 py-3 font-sans text-sm tracking-wide text-ivory transition-colors hover:bg-navy/90"
+              >
+                <WhatsAppIcon />
+                Order via WhatsApp
+              </a>
+            ) : (
+              <button
+                disabled
+                title="WhatsApp ordering isn't set up yet — needs the business number"
+                className="inline-flex cursor-not-allowed items-center gap-2 rounded-full bg-navy/40 px-8 py-3 font-sans text-sm tracking-wide text-ivory"
+              >
+                <WhatsAppIcon />
+                Order via WhatsApp
+              </button>
+            )}
+            <WishlistButton handle={product.handle} />
+          </div>
 
           {product.howToUse && (
             <div className="mt-10 border-t border-mist pt-6">

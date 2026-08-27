@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { SKIN_TYPES } from "@/lib/data";
-import { PlaceholderPage } from "@/components/ui/PlaceholderPage";
+import { SKIN_TYPES, getProductsBySkinType } from "@/lib/data";
+import { ProductCard } from "@/components/ui/ProductCard";
 
 export function generateStaticParams() {
   return SKIN_TYPES.map((t) => ({ type: t.key }));
@@ -26,10 +26,20 @@ export default async function SkinTypePage({
   const skinType = SKIN_TYPES.find((t) => t.key === type);
   if (!skinType) notFound();
 
+  const products = getProductsBySkinType(skinType.key);
+
   return (
-    <PlaceholderPage
-      title={`${skinType.fullLabel} skin`}
-      note="Recommended products for this skin type aren't wired up yet — products need a skin-type tag from the real catalog first."
-    />
+    <div className="mx-auto max-w-7xl px-6 py-14">
+      <h1 className="mb-8 font-display text-4xl text-navy">{skinType.fullLabel} skin</h1>
+      {products.length > 0 ? (
+        <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      ) : (
+        <p className="font-sans text-sm text-ink/50">No products for this skin type yet.</p>
+      )}
+    </div>
   );
 }

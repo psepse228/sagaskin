@@ -11,6 +11,7 @@ const infoLinks = [
   { href: "/about", label: "About us" },
   { href: "/contact", label: "Contact us" },
   { href: "/shipping", label: "Shipping & Delivery" },
+  { href: "/returns", label: "Returns & Refund Policy" },
   { href: "/privacy", label: "Privacy Policy" },
   { href: "/terms", label: "Terms & Conditions" },
   { href: "/faq", label: "FAQs" },

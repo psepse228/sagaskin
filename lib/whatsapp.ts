@@ -4,11 +4,10 @@
  * docs/shopify-setup.md). Customers message the business directly to
  * order instead of using a cart/checkout.
  *
- * TODO: client hasn't sent the business WhatsApp number yet. Fill in
- * once received — international format, digits only, e.g. "447123456789"
- * for a UK number (no +, no spaces/dashes).
+ * Client-supplied number (2026-08-27), temporary while Stripe checkout
+ * is being set up — +44 7353 307796.
  */
-export const WHATSAPP_NUMBER = "";
+export const WHATSAPP_NUMBER = "447353307796";
 
 export function isWhatsAppOrderingConfigured() {
   return WHATSAPP_NUMBER.length > 0;

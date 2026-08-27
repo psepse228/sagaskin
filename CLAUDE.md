@@ -22,13 +22,26 @@ new changes; merge it into `main` when a round of work is ready to ship
   (the last gap, `haruharu-black-rice-cleansing-oil`, was filled in
   2026-08-26).
 - **Legal pages are real content, from the client, not placeholder** —
-  `/privacy` and `/shipping` are fully written from a `Policies/` folder
-  (untracked, not committed) the client dropped at the repo root
-  2026-08-26. `/terms` is **partial**: the client's Terms & Conditions
-  file only contained sections 18–22 (the tail end) — sections 1–17 are
-  still pending. `/faq` and a Returns & Refund Policy (referenced by the
-  Shipping Policy) haven't been sent yet and are still `PlaceholderPage`.
-  Shared rendering lives in `components/ui/LegalPage.tsx`.
+  `/privacy`, `/shipping`, and `/returns` are fully written from a
+  `Policies/` folder (untracked, not committed) the client dropped at the
+  repo root 2026-08-26, in two batches (the second batch — About us,
+  Contact Us, Delivery Address, Faulty/Damaged items, a second Terms
+  file — landed later the same day without an explicit heads-up; worth
+  re-checking that folder for new files each time, not just once).
+  `/terms` is assembled from three separate client files and covers
+  sections 1–6 and 10–22 — **sections 7–9 are still missing** (likely
+  Payment / Order Acceptance / Delivery & Dispatch, given what's numbered
+  around them). `/about` and `/faq` are still `PlaceholderPage` — the
+  client's "About us.txt" and "Contact Us.txt" files exist but are
+  empty. Shared rendering lives in `components/ui/LegalPage.tsx`.
+- **Skin-type pages are real** — `MockProduct.skinTypes` (in
+  `lib/data.ts`) was filled in from the "Perfect for" / "Suitable for"
+  lines already present in the client's own product copy (not a
+  separate list) — see `getProductsBySkinType()`. Products whose copy
+  just says "All skin types" get all four; the rest match what's
+  specifically named. Client offered to send an explicit list instead
+  but it hadn't arrived and the circles/Ask SAGA links were dead-ending,
+  so this shipped from the copy that already existed rather than wait.
 - **Next.js 15 (App Router, TypeScript, Tailwind v4)** — scaffolded 2026-08-05
 - Deployed on Vercel (`.vercel/project.json` links to the existing
   `sagaskin` project under `muhammadrizomirzaahmedov-7014s-projects`).
@@ -47,10 +60,13 @@ new changes; merge it into `main` when a round of work is ready to ship
   WhatsApp" link (`wa.me`) on product cards and the product detail page,
   in place of cart/checkout, until either the Shopify account gets fixed
   or a fresh Shopify account is set up. `WHATSAPP_NUMBER` in that file is
-  still empty — client hasn't sent the business number yet; the buttons
-  render honestly disabled until it's filled in. `lib/shopify/` still has
-  the client + starter queries, untouched, for whenever this gets
-  revisited.
+  set (client sent +44 7353 307796 2026-08-27) — buttons are live.
+  `lib/shopify/` still has the client + starter queries, untouched, for
+  whenever this gets revisited. Client also mentioned 2026-08-27 that
+  **Stripe checkout is in progress** as a more permanent path than
+  either WhatsApp or Shopify — nothing wired up yet, just noted here so
+  it isn't lost; re-check with the client before assuming which
+  commerce backend (Shopify vs. Stripe) is still the actual plan.
 
 ## Layout
 

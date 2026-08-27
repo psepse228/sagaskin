@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { formatPrice, getBrand, type MockProduct } from "@/lib/data";
 import { buildWhatsAppOrderUrl, isWhatsAppOrderingConfigured } from "@/lib/whatsapp";
+import { useWishlist } from "@/lib/wishlist";
 
 function HeartIcon({ filled }: { filled: boolean }) {
   return (
@@ -44,7 +45,8 @@ function CheckIcon() {
 }
 
 export function ProductCard({ product }: { product: MockProduct }) {
-  const [wishlisted, setWishlisted] = useState(false);
+  const { isWishlisted, toggle } = useWishlist();
+  const wishlisted = isWishlisted(product.handle);
   const [added, setAdded] = useState(false);
 
   return (
@@ -52,16 +54,16 @@ export function ProductCard({ product }: { product: MockProduct }) {
       href={`/products/${product.handle}`}
       className="group flex flex-col items-center rounded-2xl border border-mist bg-white p-5 text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_30px_-16px_rgba(14,30,53,0.35)]"
     >
-      <div className="relative mb-4 flex aspect-[3/4] w-full items-center justify-center overflow-hidden rounded-xl bg-mist/30">
+      <div className="relative mb-4 flex aspect-[3/4] w-full items-center justify-center overflow-hidden">
         <Image
           src={product.image}
           alt={product.title}
-          width={160}
-          height={220}
-          className="max-h-[85%] w-auto object-contain transition-transform group-hover:scale-105"
+          width={200}
+          height={266}
+          className="h-full w-full object-contain transition-transform group-hover:scale-105"
         />
         {product.vegan && (
-          <span className="absolute bottom-2 left-2 rounded-full border border-mist bg-cream px-2 py-0.5 font-sans text-[10px] tracking-wide text-ink/70">
+          <span className="absolute bottom-2 left-2 rounded-full border border-mist bg-cream px-3 py-1 font-sans text-xs tracking-wide text-ink/70">
             Vegan
           </span>
         )}
@@ -70,11 +72,11 @@ export function ProductCard({ product }: { product: MockProduct }) {
           type="button"
           aria-pressed={wishlisted}
           aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
-          title="Wishlist isn't wired up to an account yet — this just remembers your click for now"
+          title={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
-            setWishlisted((v) => !v);
+            toggle(product.handle);
           }}
           className={`absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full border border-mist bg-white/90 backdrop-blur-sm transition-colors hover:border-blue ${
             wishlisted ? "text-blue" : "text-navy/70"

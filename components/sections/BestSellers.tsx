@@ -8,7 +8,7 @@ export function BestSellers() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-14">
       <h2 className="mb-10 text-center font-display text-5xl font-medium text-navy sm:text-6xl">
-        Best sellers
+        Bestsellers
       </h2>
       <Reveal className="grid grid-cols-2 gap-6 sm:grid-cols-4">
         {products.map((product) => (

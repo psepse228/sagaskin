@@ -21,6 +21,14 @@ new changes; merge it into `main` when a round of work is ready to ship
   itself is genuine, all 15 products now have real client-supplied copy
   (the last gap, `haruharu-black-rice-cleansing-oil`, was filled in
   2026-08-26).
+- **Legal pages are real content, from the client, not placeholder** —
+  `/privacy` and `/shipping` are fully written from a `Policies/` folder
+  (untracked, not committed) the client dropped at the repo root
+  2026-08-26. `/terms` is **partial**: the client's Terms & Conditions
+  file only contained sections 18–22 (the tail end) — sections 1–17 are
+  still pending. `/faq` and a Returns & Refund Policy (referenced by the
+  Shipping Policy) haven't been sent yet and are still `PlaceholderPage`.
+  Shared rendering lives in `components/ui/LegalPage.tsx`.
 - **Next.js 15 (App Router, TypeScript, Tailwind v4)** — scaffolded 2026-08-05
 - Deployed on Vercel (`.vercel/project.json` links to the existing
   `sagaskin` project under `muhammadrizomirzaahmedov-7014s-projects`).

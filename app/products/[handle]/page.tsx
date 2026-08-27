@@ -50,13 +50,13 @@ export default async function ProductPage({
         ← Back to products
       </Link>
       <div className="grid gap-10 sm:grid-cols-2">
-        <div className="flex items-center justify-center rounded-2xl border border-mist bg-white p-10">
+        <div className="flex aspect-square items-center justify-center">
           <Image
             src={product.image}
             alt={product.title}
-            width={220}
-            height={260}
-            className="max-h-72 w-auto object-contain"
+            width={420}
+            height={500}
+            className="h-full w-full object-contain"
           />
         </div>
         <div>

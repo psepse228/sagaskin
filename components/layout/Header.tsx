@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BRANDS, ROUTINE_STEPS } from "@/lib/data";
+import { NavDropdown } from "@/components/layout/NavDropdown";
 
 function SearchIcon() {
   return (
@@ -40,9 +41,6 @@ function CartIcon({ size = 18 }: { size?: number }) {
   );
 }
 
-const navLinkClass =
-  "font-sans text-[15px] tracking-wide text-navy transition-colors hover:text-blue";
-
 export function Header() {
   return (
     <header className="border-b border-mist bg-cream">
@@ -78,41 +76,18 @@ export function Header() {
 
       <nav className="border-t border-mist">
         <ul className="mx-auto flex max-w-7xl gap-8 px-6 py-3">
-          <li className="group relative">
-            <button className={`flex items-center gap-1 ${navLinkClass}`}>
-              Brands
-              <span className="text-[10px]">▾</span>
-            </button>
-            <div className="invisible absolute left-0 z-10 min-w-[200px] rounded-lg border border-mist bg-white py-2 opacity-0 shadow-lg transition-opacity duration-150 group-hover:visible group-hover:opacity-100">
-              {BRANDS.map((brand) => (
-                <Link
-                  key={brand.handle}
-                  href={`/brands/${brand.handle}`}
-                  className="block px-4 py-2 font-sans text-sm text-ink hover:bg-mist"
-                >
-                  {brand.label}
-                </Link>
-              ))}
-            </div>
-          </li>
-
-          <li className="group relative">
-            <button className={`flex items-center gap-1 ${navLinkClass}`}>
-              Skincare
-              <span className="text-[10px]">▾</span>
-            </button>
-            <div className="invisible absolute left-0 z-10 min-w-[220px] rounded-lg border border-mist bg-white py-2 opacity-0 shadow-lg transition-opacity duration-150 group-hover:visible group-hover:opacity-100">
-              {ROUTINE_STEPS.map((s) => (
-                <Link
-                  key={s.step}
-                  href={`/skincare/${s.step}`}
-                  className="block px-4 py-2 font-sans text-sm text-ink hover:bg-mist"
-                >
-                  Step {s.step}. {s.label}
-                </Link>
-              ))}
-            </div>
-          </li>
+          <NavDropdown
+            label="Brands"
+            items={BRANDS.map((b) => ({ key: b.handle, href: `/brands/${b.handle}`, label: b.label }))}
+          />
+          <NavDropdown
+            label="Skincare"
+            items={ROUTINE_STEPS.map((s) => ({
+              key: String(s.step),
+              href: `/skincare/${s.step}`,
+              label: `Step ${s.step}. ${s.label}`,
+            }))}
+          />
         </ul>
       </nav>
     </header>

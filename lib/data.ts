@@ -50,8 +50,8 @@ export const ROUTINE_STEPS = [
   { step: 1, label: "Cleanser" },
   { step: 2, label: "Toner" },
   { step: 3, label: "Serum" },
-  { step: 4, label: "Sunscreen" },
-  { step: 5, label: "Moisturiser" },
+  { step: 4, label: "Moisturiser" },
+  { step: 5, label: "Sunscreen" },
 ] as const;
 
 // A–Z is a real Shopify collection link once wired up. The rest are the

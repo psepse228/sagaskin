@@ -7,8 +7,8 @@ const STEP_TO_CATEGORY: Record<number, MockProduct["category"]> = {
   1: "cleansers",
   2: "toners",
   3: "serums",
-  4: "spf",
-  5: "moisturisers",
+  4: "moisturisers",
+  5: "spf",
 };
 
 export function generateStaticParams() {

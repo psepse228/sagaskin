@@ -7,7 +7,7 @@ export default function OrdersPage() {
   return (
     <PlaceholderPage
       title="Orders"
-      note="Order history isn't wired up yet — needs sign-in (Shopify Customer Account API) first."
+      note="Order history is coming soon."
       backHref="/account"
       backLabel="Back to account"
     />

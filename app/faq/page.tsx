@@ -7,7 +7,7 @@ export default function FaqPage() {
   return (
     <PlaceholderPage
       title="FAQs"
-      note="Real questions/answers are pending from the client — placeholder so the footer link doesn't 404."
+      note="Frequently asked questions are coming soon. In the meantime, get in touch at hello@sagaskin.uk."
       backHref="/"
       backLabel="Back to home"
     />

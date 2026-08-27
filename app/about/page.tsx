@@ -7,7 +7,7 @@ export default function AboutPage() {
   return (
     <PlaceholderPage
       title="About SAGA"
-      note="Brand story copy is pending from the client — this page is a placeholder so the footer link doesn't 404."
+      note="Our story is coming soon."
       backHref="/"
       backLabel="Back to home"
     />

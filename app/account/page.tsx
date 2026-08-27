@@ -7,7 +7,7 @@ export default function AccountPage() {
   return (
     <PlaceholderPage
       title="Account"
-      note="Sign-in and order history aren't wired up yet — this needs the Shopify Customer Account API, which hasn't been decided on yet (see CLAUDE.md open questions)."
+      note="Account sign-in is coming soon."
     />
   );
 }

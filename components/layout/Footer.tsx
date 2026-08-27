@@ -1,8 +1,6 @@
 import Link from "next/link";
 
 const accountLinks = [
-  { href: "/account", label: "My account" },
-  { href: "/account/orders", label: "Orders" },
   { href: "/cart", label: "Shopping cart" },
   { href: "/wishlist", label: "Wishlist" },
 ];
@@ -14,7 +12,6 @@ const infoLinks = [
   { href: "/returns", label: "Returns & Refund Policy" },
   { href: "/privacy", label: "Privacy Policy" },
   { href: "/terms", label: "Terms & Conditions" },
-  { href: "/faq", label: "FAQs" },
 ];
 
 export function Footer() {
@@ -34,7 +31,7 @@ export function Footer() {
           <button
             type="submit"
             disabled
-            title="Not wired up yet"
+            title="Coming soon"
             className="shrink-0 cursor-not-allowed rounded-full bg-navy/40 px-5 py-2 font-sans text-xs font-bold uppercase tracking-wide text-ivory"
           >
             Join

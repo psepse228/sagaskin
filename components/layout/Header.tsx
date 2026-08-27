@@ -56,7 +56,7 @@ export function Header() {
             placeholder="Search"
             disabled
             aria-disabled="true"
-            title="Search isn't wired up yet — needs the real product catalog"
+            title="Search coming soon"
             className="w-full cursor-not-allowed bg-transparent font-sans text-sm text-ink/50 placeholder:text-ink/40 focus:outline-none"
           />
         </div>

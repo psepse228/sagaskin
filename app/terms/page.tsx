@@ -16,7 +16,7 @@ export default function TermsPage() {
       lastUpdated="26 August 2026"
       intro={[
         "Welcome to SAGA | Korean Skincare UK. These Terms & Conditions govern your use of the SAGA website and any purchases made through it. By accessing our website or placing an order, you agree to be bound by these Terms & Conditions.",
-        "Sections 7–9 are still pending from the client — everything else below is their real text. Get in touch at hello@sagaskin.uk if you have questions not yet covered here.",
+        "Get in touch at hello@sagaskin.uk if you have any questions not covered here.",
       ]}
       sections={[
         {
